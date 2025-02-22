@@ -96,7 +96,7 @@ Untagged,9
 Count of matches for each port/protocol combination 
 Port/Protocol Combination Counts: 
 
- Port,Protocol,Count 
+Port,Protocol,Count 
 
 22,tcp,1 
 
