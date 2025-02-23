@@ -6,6 +6,7 @@
 3) To run using default files use command: 'python3 run.py'
 
     #### Note: By default the project runs the files 'flowLogData' and 'lookupTable' under "inputFiles" directory (does not include unit tests).
+    #### Note: The keyword for "python3" might differ.
 
 4) To run files different from the default use command: 'python3 run.py --lookupTableSource=<path_to_your_lookupTableSource/> --flowLogSource=<path_to_your_flowLogSource/> --writeSource=<path_to_your_writeSource>'
 4) To run unit tests use command: 'python3 run.py -u'
