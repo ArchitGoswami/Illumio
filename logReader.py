@@ -4,7 +4,7 @@ from collections import defaultdict
 import os
 
 class LogReader():
-    def __init__(self,lookupTableSource: str="inputFiles/lookupTable.csv"):
+    def __init__(self,lookupTableSource: str="inputFiles/lookupTable"):
         lg=LookupGen()
         # TODO: don't hardcode?
         self.lookupHash=lg.generateLookupTable(lookupTableSource)
@@ -12,7 +12,7 @@ class LogReader():
         self.protocolCount=defaultdict(int)
         
     
-    def orchestrator(self,readSource: str="inputFiles/flowLogData.log",writeSource: str='outputFiles/'):
+    def orchestrator(self,readSource: str="inputFiles/flowLogData",writeSource: str='outputFiles/'):
         print("LOG: Reading From:",readSource)
         readSuccessFul=self.readFile(readSource)
         if readSuccessFul:
@@ -48,7 +48,7 @@ class LogReader():
     def writeFile(self,writeSource:str="outputFiles/"):
         # write to both files
         print("LOG: Writing to txt files")
-        tagCountSource=writeSource+"tagCount.txt"
+        tagCountSource=writeSource+"tagCount"
         os.makedirs(os.path.dirname(tagCountSource), exist_ok=True)
         file = open(tagCountSource, "w")
         file.write("Tag Counts: \n\nTag,Count \n\n")
@@ -58,7 +58,7 @@ class LogReader():
         file.close()
         print("LOG: Finished Writing to:",tagCountSource)
 
-        PortProtocolCombinationCountSource=writeSource+"PortProtocolCombinationCount.txt"
+        PortProtocolCombinationCountSource=writeSource+"PortProtocolCombinationCount"
         os.makedirs(os.path.dirname(PortProtocolCombinationCountSource), exist_ok=True)
         file = open(PortProtocolCombinationCountSource, "w")
         file.write("Port/Protocol Combination Counts: \n\nPort,Protocol,Count \n\n")

@@ -14,12 +14,13 @@ def fileClear():
                 shutil.rmtree(folder) # For non-empty folders
                 print("LOG: Folder '",folder,"' deleted successfully.")
             except OSError as e:
-                print(f"LOG: Error deleting folder '{folder}': {e}")
+                print("LOG: Error deleting folder '{folder}':",e)
         else:
             print("LOG: Folder '",folder,"' does not exist.")
 
 if __name__=="__main__":
     lineSep="_____________________________________________________________________________________________________________\n_____________________________________________________________________________________________________________"
+    fileClear()
     print(lineSep)
     print("LOG: Running Tests")
     unittest.main(exit=False)      # runs all unit tests
