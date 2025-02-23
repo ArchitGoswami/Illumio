@@ -14,7 +14,7 @@ def fileClear():
                 shutil.rmtree(folder) # For non-empty folders
                 print("LOG: Folder '",folder,"' deleted successfully.")
             except OSError as e:
-                print("LOG: Error deleting folder '{folder}':",e)
+                print("LOG: Error deleting folder '",folder,"':",e)
         else:
             print("LOG: Folder '",folder,"' does not exist.")
 
