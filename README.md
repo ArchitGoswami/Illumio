@@ -31,7 +31,7 @@
 # Design decisions
 
 1) Using tuple for tagCount and protocolCount: converting pair of dstport and protocol values to string using separators would be possible but conversion back is unnecessarily 
-2) using filecmp to compare files instead of checking with hard-coded string values. Slower but more accurate for stress testing of the defined system.
+2) Using filecmp to compare files instead of checking with hard-coded string values. Slower but more accurate for stress testing of the defined system.
 
 # Testing
 
