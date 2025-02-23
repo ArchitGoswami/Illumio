@@ -11,6 +11,16 @@ class LogReader():
         self.tagCount=defaultdict(int)
         self.protocolCount=defaultdict(int)
         
+    
+    def orchestrator(self,readSource: str="inputFiles/flowLogData.log",writeSource: str='outputFiles/'):
+        print("LOG: Reading From:",readSource)
+        readSuccessFul=self.readFile(readSource)
+        if readSuccessFul:
+            self.writeFile(writeSource)
+        else:
+            print("ERROR: reading was not possible")
+
+
     def readFile(self,source):
         readSuccessFul=False
         with open(source, "r") as file:
@@ -59,11 +69,3 @@ class LogReader():
             file.write(writeVal)
         file.close()
         print("LOG: Finished Writing to:",PortProtocolCombinationCountSource)
-
-    def orchestrator(self,readSource: str="inputFiles/flowLogData.log",writeSource: str='outputFiles/'):
-        print("LOG: Reading From:",readSource)
-        readSuccessFul=self.readFile(readSource)
-        if readSuccessFul:
-            self.writeFile(writeSource)
-        else:
-            print("ERROR: reading was not possible")
