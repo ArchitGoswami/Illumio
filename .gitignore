@@ -1,1 +1,6 @@
-outputFiles/
+/outputFiles/
+/__pycache__/
+/.vscode/
+/backupOutputFiles
+/test/__pycache__
+/test/outputFiles
