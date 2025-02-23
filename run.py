@@ -1,6 +1,6 @@
 # from lookup import LookupGen
 from logReader import LogReader
-from test.unitTests import UnitTests
+from unitTests import UnitTests
 import unittest
 import os
 import shutil
