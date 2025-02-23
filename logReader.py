@@ -11,8 +11,7 @@ class LogReader():
         self.tagCount=defaultdict(int)
         self.protocolCount=defaultdict(int)
         
-    
-    def orchestrator(self,readSource: str="inputFiles/flowLogData",writeSource: str='outputFiles/'):
+    def orchestrator(self,readSource: str="inputFiles/flowLogData", writeSource: str="outputFiles/"):
         print("LOG: Reading From:",readSource)
         readSuccessFul=self.readFile(readSource)
         if readSuccessFul:

@@ -4,6 +4,7 @@ from test.unitTests import UnitTests
 import unittest
 import os
 import shutil
+import argparse
 
 def fileClear():
     # deletes folders containing old output files
@@ -19,16 +20,38 @@ def fileClear():
             print("LOG: Folder '",folder,"' does not exist.")
 
 if __name__=="__main__":
-    lineSep="_____________________________________________________________________________________________________________\n_____________________________________________________________________________________________________________"
+    
+    s="_"*110
+    lineSep=s+"\n"+s
+
+    parser = argparse.ArgumentParser(description="Flags to see unit tests and to take custom filepaths for flowLogSource read, write, and lookupTableSource read")
+    parser.add_argument("-u", action='store_true')
+    parser.add_argument("--lookupTableSource", required=False, type=str)
+    parser.add_argument("--flowLogSource", required=False, type=str)
+    parser.add_argument("--writeSource", required=False, type=str)
+    args = parser.parse_args()
+    lookupTableSource = args.lookupTableSource
+    flowLogSource     = args.flowLogSource       
+    writeSource       = args.writeSource       
+    runUnitTests      = args.u
+
     fileClear()
     print(lineSep)
-    print("LOG: Running Tests")
-    unittest.main(exit=False)      # runs all unit tests
+    if runUnitTests:
+        print("LOG: Running Tests")
+        unittest.main(argv=[__file__])      # runs all unit tests
+        print(lineSep)
 
-    print(lineSep)
-    print("LOG: Running user files")
-    print(lineSep)
+    else:
+        if lookupTableSource is None:  
+            lookupTableSource="inputFiles/lookupTable"
+        if flowLogSource is None:  
+            flowLogSource="inputFiles/flowLogData"
+        if writeSource is None:  
+            writeSource="outputFiles/"
+        print("LOG: Running user files")
+        print(lineSep)
 
-    logG=LogReader()
-    logG.orchestrator()            # calls log Reader orchestrator
-    print(lineSep) 
+        logG=LogReader(lookupTableSource)
+        logG.orchestrator(flowLogSource, writeSource) # calls log Reader orchestrator
+        print(lineSep) 
